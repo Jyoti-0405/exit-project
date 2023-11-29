@@ -1,0 +1,18 @@
+.mb-3{
+    margin-top: 25px;
+    margin-left: 110px;
+    margin-bottom: 25px;
+}
+
+.spacing-top{
+    padding-top: 10px;
+}
+.alert-danger{
+    margin-top: 10px;
+}
+
+.black-button{
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+}

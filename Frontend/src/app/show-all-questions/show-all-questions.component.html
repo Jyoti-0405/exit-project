@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand"><b>Welcome : </b> {{userName}}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard">DashBoard</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <a (click)="logOutLogin()" class="btn btn-primary btn-md" data-toggle="tooltip" title="Logout">
+          <span class="fa fa-sign-out"></span>Log out</a>
+      </ul>
+        <div>
+          <select class="sort-bar" id="sort-by" (change)="sort($event)" style="padding: 6px; background:#edf2ff; border:none;border-radius:7px ;margin-left: 10px;">
+            <option value="" selected disabled hidden>Sort By</option>
+            <option value="brand">Brand</option>
+            <option value="Low">Low to High Price</option>
+            <option value="High">High to Low Price</option>
+        </select> 
+        </div>  
+        <div *ngFor="let p of productList">
+      {{p.brand}} - {{p.price}}
+    </div>
+  </div>
+</nav>
+  <a class="nav-link" data-toggle="tooltip" title="back" routerLink="/dashboard">
+    <i class="fa fa-arrow-circle-left ml-4"></i></a>
+    <h2 style="text-align:center"></h2>
+
+<div class="search-container mt-4">
+<ul class="pList">
+  <li *ngFor="let item of productList">
+    <div class="card">
+      <div class="container">
+      <div class="row">
+      <div class="card-body">
+        <img [src]="item.imagelink" style="max-width:90%;">
+      <p class="card-title"><b>Product Code :</b>{{item.productCode}}</p>
+      <p class="card-text"><b>Price :</b>{{item.price}}</p>
+      <p class="card-text"><b>Brand :</b>{{item.brand}}</p>
+    </div>
+
+    <button type="submit">
+      <p>
+      <a class="button1" [routerLink]="['/getProductById/'+item.productCode]">View details</a>
+    </p>
+    </button> 
+    </div>
+    </div>
+    </div>
+  </li>
+</ul>
+
+ 
+  

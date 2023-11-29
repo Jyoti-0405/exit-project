@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand"><b>Welcome : </b> {{product.userName}}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard">DashBoard</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <a (click)="logOutLogin()" class="btn btn-primary btn-md" data-toggle="tooltip" title="Logout">
+        <span class="fa fa-sign-out"></span> Log out
+      </a>
+    </ul>
+  </div>
+</nav>
+<div class="card mb-3" style="max-width: 1000px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img [src]="product.imagelink" class="img-fluid rounded-start">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><b>Product Code: </b>{{product.productCode}}</h5>
+        <p class="card-text"><b>Brand: </b>{{product.brand}}</p>
+        <p class="card-text"><b>Price: </b>{{product.price}}</p>
+        <p class="card-text"><b>Description: </b>{{product.description}}</p>
+        <form class="d-flex" role="search">
+          <input [ngModelOptions]="{standalone: true}" [(ngModel)]="endPoint" class="form-control me-2" type="number"
+            placeholder="Enter pincode" arial-label="Search" minlength="6" maxlength="6">
+          <button class="btn btn-outline-success" (click)="checkServiceability()" type="submit">Check</button>
+        </form>
+        <ng-container *ngIf="pincodeData.status=='Success'">
+          <p><b>State:</b> {{pincodeData.data.State}}</p>
+          <p><b>City: </b>{{pincodeData.data.District}}</p>
+          <p><b>Delivery Status: </b>{{pincodeData.data.DeliveryStatus}}</p>
+          <button class="black-button" type="submit">
+          <a class="button1" (click)='expected_delivery()'>Check Expected Delivery Date</a>
+        </button>
+        </ng-container>
+        <ng-container *ngIf="pincodeData.status=='Error'">
+           <div class="alert alert-danger" role="alert">
+            Invalid pincode!!!Enter Again.
+           </div>
+          <!-- <p style="color:red;">
+            {{pincodeData.data}}
+          </p> -->
+        </ng-container>
+        
+      </div>
+    </div>
+  </div>
+</div>

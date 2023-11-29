@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand"><b>Welcome : </b> {{userName}}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard">DashBoard</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <a (click)="logOutLogin()" class="btn btn-primary btn-md" data-toggle="tooltip" title="Logout">
+        <span class="fa fa-sign-out"></span> Log out
+      </a>
+
+    </ul>
+  </div>
+</nav>
+<a class="nav-link" data-toggle="tooltip" title="back" routerLink="/dashboard"><i
+    class="fa fa-arrow-circle-left ml-4"></i></a>
+
+<!-- <div class="search-container mt-4">
+<input type="search" *ngIf="product.length!=0" [(ngModel)]="searchValue" id="search-bar" placeholder="Filter Here...">
+<button id="search">Search</button>
+</div> -->
+<div class="text-align-center"  *ngIf="product.length!=0" [(ngModel)]="searchValue">
+  <ul class="p-List" *ngIf="product.length!=0||product!=null">
+    <li *ngFor="let item of product|filter:searchValue">
+      <div class="" style="height:auto;">
+        <div class="card">
+          <div class="container">
+            <div class="row">
+              <div class="card-body">
+                <img [src]="item.imagelink" style="width:100%">
+                <p class="card-title"><b>Product Code :</b>{{item.productCode}}</p>
+                <p class="card-text"><b>Price :</b>{{item.price}}</p>
+                <p class="card-text"><b>Brand :</b>{{item.brand}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+<div *ngIf="productAvailabl()">
+  <div class="card card-center" style="width: 300px;">
+    <img class="card-img-top"
+      src="https://th.bing.com/th/id/OIP.XsW8qvQmq-Q6aZMnzColEAAAAA?w=170&h=180&c=7&o=5&dpr=1.5&pid=1.7"
+      alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">No Products Available</h5>
+      <p class="card-text">Please! wait for some day if you search valid product </p>
+    </div>
+  </div>
+</div>
