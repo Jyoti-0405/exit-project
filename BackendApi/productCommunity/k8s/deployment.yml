@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-docker-container
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: springboot-docker-container
+  template:
+    metadata:
+      labels:
+        app: springboot-docker-container
+    spec:
+      containers:
+        - name: springboot-docker-container
+          image: localhost:5000/spring:tag:latest
+          ports:
+            - containerPort: 8090
